@@ -21,11 +21,6 @@ def cpt_codes_loader():
     # print(data.keys())
     # pprint(cpt_codes_dict)
 
-    print(random.choice(list(cpt_codes_dict.keys())))
-    print(random.choice(list(cpt_codes_dict.keys())))
-    print(random.choice(list(cpt_codes_dict.keys())))
-
-
     return cpt_codes_dict
 
 
@@ -50,55 +45,7 @@ def bigQuery_loader():
         row.update(d1)
         row.update(d2)
 
-
-    pprint(data)
-
     return data
 
 
-bigQuery_loader()
-
-
-
-
-#  {
-#   'average_covered_charges': 14812.06,
-#   'average_medicare_payments': 2873.44,
-#   'average_total_payments': 4545.61,
-#   'drg_definition': '392 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W/O '
-#                     'MCC',
-#   'hospital_referral_region_description': 'IN - Gary',
-#   'provider_city': 'CROWN POINT',
-#   'provider_id': '150166',
-#   'provider_name': 'PINNACLE HOSPITAL',
-#   'provider_state': 'IN',
-#   'provider_street_address': '9301 CONNECTICUT DR',
-#   'provider_zipcode': 46307,
-#   'total_discharges': 18
-#   'diagnosis' : '',
-#   'date_of_Service' : '',
-#   'place _of_service' : '',
-#   'procedure' : '',
-#   'days_or_units' : '',
-#   'id_qualifier' : '',
-#   'total_charge' : '',
-#   'amount_paid' : '',
-#   'insurance_plan' : '',
-#
-# }
-
-# minimum data needed for cms-1500:
-
-# 'Diagnosis'= Code identifying patient's ailment.
-# 'Date of Service'= Date of service performed.
-# 'Place of Service'= Type of facility where services were rendered.
-# 'Procedure'= Code indicating type of service rendered;
-# 'Charges'= Amount billed by provider; may not reflect price.
-# 'Days or Units'= Quantity of procedure in days or units.
-# 'ID Qualifier'= Identifies providers with no national ID.
-# 'Provider ID'= Unique tax identifier of provider.
-# 'Total Charge'= Total billed for claim; may not reflect price.
-# 'Amount Paid'= Amount paid by patient; does not include insurer's payment (may not
-# 'Service Location'= Address where services were rendered.
-# 'Billing Provider'= Billing office address; may not be location where services rendered .
-# 'Insurance Plan'= Details of insurance company and plan name.
+dataset = bigQuery_loader()

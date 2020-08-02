@@ -28,3 +28,31 @@ data sample generated:
   'provider_zipcode': 46307,
   'total_discharges': 18}
   ```
+
+
+
+- minimum data needed for cms-1500
+
+```
+
+# 'Diagnosis'= Code identifying patient's ailment.
+# 'Date of Service'= Date of service performed.
+# 'Place of Service'= Type of facility where services were rendered.
+# 'Procedure'= Code indicating type of service rendered;
+# 'Charges'= Amount billed by provider; may not reflect price.
+# 'Days or Units'= Quantity of procedure in days or units.
+# 'ID Qualifier'= Identifies providers with no national ID.
+# 'Provider ID'= Unique tax identifier of provider.
+# 'Total Charge'= Total billed for claim; may not reflect price.
+# 'Amount Paid'= Amount paid by patient; does not include insurer's payment (may not
+# 'Service Location'= Address where services were rendered.
+# 'Billing Provider'= Billing office address; may not be location where services rendered .
+# 'Insurance Plan'= Details of insurance company and plan name.
+
+```
+
+
+## data sources:
+
+- https://gist.github.com/lieldulev/439793dc3c5a6613b661c33d71fdd185
+-
