@@ -72,6 +72,10 @@ export default {
         {
             label: 'CPT Code',
             field: 'cpt_code',
+         filterOptions: {
+            enabled: true,
+            placeholder: "#",
+          }
         },
         {
             label: 'CPT Description',
@@ -79,13 +83,16 @@ export default {
          filterOptions: {
             enabled: true,
             placeholder: "Describe CPT",
-            filterFn: this.myColumnFilter
           }
         },
 
         {
             label: 'ICD Code',
             field: 'icd1010_code',
+            filterOptions: {
+            enabled: true,
+            placeholder: "#",
+          }
         },
 
         {
@@ -101,7 +108,7 @@ export default {
             field: 'drg_definition',
             filterOptions: {
             enabled: true,
-            placeholder: "Name",
+            placeholder: "Drung Name",
           }
         },
         {
@@ -168,7 +175,7 @@ export default {
     axios.post(path, payload)
         .then((res) => {
           this.health_records = res.data.health_records;
-          this.selectOptions = res.data.cpt_categories;
+          this.selectOptions = res.data.icd_index;
         })
         .catch((error) => {
         // eslint-disable-next-line
@@ -182,7 +189,7 @@ export default {
       axios.get(path)
         .then((res) => {
           this.health_records = res.data.health_records;
-          this.selectOptions = res.data.cpt_categories;
+          this.selectOptions = res.data.icd_index;
         })
         .catch((error) => {
           // eslint-disable-next-line
