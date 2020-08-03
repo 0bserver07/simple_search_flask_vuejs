@@ -1,11 +1,23 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import HealthRecords from '../components/HealthRecords.vue';
+import Ping from '../components/Ping.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
+    {
+        path: '/',
+        name: 'HealthRecords',
+        component: HealthRecords,
+      },
+      {
+        path: '/ping',
+        name: 'Ping',
+        component: Ping,
+      },
+    {
     path: "/",
     name: "Home",
     component: Home

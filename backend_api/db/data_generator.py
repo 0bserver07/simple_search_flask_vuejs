@@ -38,7 +38,10 @@ def bigQuery_loader():
 
     for row in data:
         cpt_code = random.choice(list(cpt_codes_dict.keys()))
-        icd10_code = random.choice(list(icd10_codes_dict.keys()))
+        # icd10_code = random.choice(list(icd10_codes_dict.keys()))
+
+        # little gimmick to have repeated icd codes:
+        icd10_code = random.choice(list(icd10_codes_dict.keys())[:30])
         # print(cpt_codes_dict[cpt_code], icd10_codes_dict[icd10_code])
         d1 = {'cpt_code': cpt_code, 'cpt_desc': cpt_codes_dict[cpt_code]}
         d2 = {'icd1010_code': icd10_code, 'icd_desc': icd10_codes_dict[icd10_code]}
@@ -48,4 +51,33 @@ def bigQuery_loader():
     return data
 
 
+
+
 dataset = bigQuery_loader()
+
+
+with open('../data/data_combined.json', 'w') as json_file:
+  json.dump(dataset, json_file)
+
+
+# ['provider_id', 'provider_name', 'provider_street_address',
+#  'provider_city', 'provider_state', 'provider_zipcode',
+# 'drg_definition', 'hospital_referral_region_description',
+# 'total_discharges', 'average_covered_charges',
+# 'average_total_payments', 'average_medicare_payments',
+# 'cpt_code', 'cpt_desc', 'icd1010_code', 'icd_desc']
+
+# Usable:
+# provider_name
+# provider_street_address
+# provider_city
+# drg_definition
+# hospital_referral_region_description
+# total_discharges
+# average_covered_charges
+# average_total_payments
+# average_medicare_payments
+# cpt_code
+# cpt_desc
+# icd1010_code
+# icd_desc
