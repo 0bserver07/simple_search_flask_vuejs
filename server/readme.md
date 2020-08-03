@@ -1,6 +1,19 @@
 ### Backend API
 
+Project Layout:
 
+```
+.
+├── config.py # (currently empty, to be used for ES / DB Configs)
+├── data (dir: contains pretty much all the datafiles)
+├── db (contains the data generators, instead it will be schema)
+├── helpers (dir: created for elasticsearch and data helpers)
+├── readme.md
+├── requirements.txt
+├── server.py (Main file, run this)
+└── venv (Python Env, it shouldn't be in git, rather created locally)
+
+```
 
 - This is the basic unit for a health record in our application:
 
