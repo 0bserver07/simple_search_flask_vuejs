@@ -1,37 +1,56 @@
-### Backend API
+
+## Developing a Search and Index based web dashboard
+### Using a single page app with flask and vue.js
 
 
-### Goals:
+## Want to use this project?
+
+1. Fork/Clone
+
+1. Run the server-side Flask app in one terminal window:
+
+    ```sh
+    $ cd server
+    $ python3.7 -m venv env
+    $ source env/bin/activate
+    (env)$ pip install -r requirements.txt
+    (env)$ python server.py
+    ```
+
+    Navigate to [http://localhost:5000](http://localhost:5000)
+
+1. Run the client-side Vue app in a different terminal window:
+
+    ```sh
+    $ cd client
+    $ npm install
+    $ npm run serve
+    ```
+
+    Navigate to [http://localhost:8080](http://localhost:8080)
+
+
+
 
 ### Tasks:
 
-data sample generated:
-
-```
- {'average_covered_charges': 14812.06,
-  'average_medicare_payments': 2873.44,
-  'average_total_payments': 4545.61,
-  'cpt_code': '64449',
-  'cpt_desc': 'N block inj, lumbar plexus',
-  'drg_definition': '392 - ESOPHAGITIS, GASTROENT & MISC DIGEST DISORDERS W/O '
-                    'MCC',
-  'hospital_referral_region_description': 'IN - Gary',
-  'icd1010_code': 'V0211XS',
-  'icd_desc': 'V0211XS Pedestrian on roller-skates injured in collision with '
-              'two- or three-wheeled motor vehicle in traffic accident, '
-              'sequela\n',
-  'provider_city': 'CROWN POINT',
-  'provider_id': '150166',
-  'provider_name': 'PINNACLE HOSPITAL',
-  'provider_state': 'IN',
-  'provider_street_address': '9301 CONNECTICUT DR',
-  'provider_zipcode': 46307,
-  'total_discharges': 18}
-  ```
+  - [ ] Find CMS-1500, ICD Codes and Patient Data (anonymized)
+  - [ ] Combine and generate a proper dataset.
+  - [ ] Create Frontend interface with custom filters
+  - [ ] Create Backend API to provide data and heavy filter (search)
+  - [ ] Create index based lookup (elasticsearch or pickle the dictionaries)
+  - [ ] Update documentation
 
 
+-----
 
-- minimum data needed for cms-1500
+### Outcomes:
+
+### Data:
+
+- According to Herman et al. the following is the minimum relevant to follow a health record to be used with the CMS-1500 [Ref 2]:
+
+> From Table-1 Below
 
 ```
 
@@ -51,8 +70,32 @@ data sample generated:
 
 ```
 
+- Data extracted from Big Query for CMS medicare claims, (Synthetic Data) [Ref 3]:
 
-## data sources:
+```
 
-- https://gist.github.com/lieldulev/439793dc3c5a6613b661c33d71fdd185
--
+ ['provider_id', 'provider_name', 'provider_street_address',
+  'provider_city', 'provider_state', 'provider_zipcode',
+ 'drg_definition', 'hospital_referral_region_description',
+ 'total_discharges', 'average_covered_charges',
+ 'average_total_payments', 'average_medicare_payments',
+ 'cpt_code', 'cpt_desc', 'icd1010_code', 'icd_desc']
+```
+
+- ICD Preocudre codes from the CDC data gov.
+
+```
+A000    Cholera due to Vibrio cholerae 01, biovar cholerae
+A001    Cholera due to Vibrio cholerae 01, biovar eltor
+```
+
+
+
+
+-------
+
+## references:
+
+1. CPT 4 Codes, found on Github: https://gist.github.com/lieldulev/439793dc3c5a6613b661c33d71fdd185
+2. "Measuring Price Dynamics: A Guide to Understanding Payer-Physician Claims Data" Douglas A. Herman.
+3. cms synthetic patient data omop [link](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=cms_synthetic_patient_data_omop&t=care_site&page=table&project=keen-vision-285016&folder=&organizationId=)

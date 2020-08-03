@@ -1,11 +1,10 @@
 ### Backend API
 
 
-### Goals:
 
-### Tasks:
+- This is the basic unit for a health record in our application:
 
-data sample generated:
+> Data sample combined from all sources:
 
 ```
  {'average_covered_charges': 14812.06,
